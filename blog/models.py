@@ -5,6 +5,7 @@ class Post(models.Model):
     author = models.CharField("Author", max_length=100)
     description = models.TextField("Post content")
     date = models.DateField("Publication date")
+    img = models.ImageField("Image", upload_to="image/%Y/%m")
 
     def __str__(self) -> str:
         return f"{self.title}, {self.author}"
@@ -12,5 +13,3 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Posts"
-
-    

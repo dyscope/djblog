@@ -13,3 +13,18 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Posts"
+
+
+class Comments(models.Model):
+    email = models.EmailField()
+    name = models.CharField("Name", max_length=50)
+    text_comments = models.TextField("Comment", max_length=1000)
+    post = models.ForeignKey(Post, verbose_name="Post", on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.name}, {self.post}"
+
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+
